@@ -19,8 +19,6 @@ fi
 
 alias spacman="sudo pacman"
 alias ls="ls --color"
-#alias urxvt="urxvt -ip +sb +rv -sl 5000 -title [dib:box] -sh 75 -tint grey -fn "xft:terminus-12""
-#alias urxvt="urxvt -ip +sb -rv -sl 5000 -title [dib:box] -sh 75 -tint grey"
 #alias X="startx -- -dpi 96 -nolisten tcp $@"
 alias X="startx -- $@"
 alias wget="wget -t 2 --passive-ftp"
@@ -29,14 +27,9 @@ alias ncmpc="ncmpc -e -h kenpachi"
 MANPATH=$MANPATH
 PATH=$HOME/bin:$PATH
 
-# This line was appended by KDE
 # Make sure our customised gtkrc file is loaded.
-export GTK2_RC_FILES=$HOME/.gtkrc-2.0
 export OOO_FORCE_DESKTOP="gnome &"
 
-# AUR cvs
-#export CVSROOT=":pserver:dtw@cvs.archlinux.org:/home/cvs-community"
-export CVS_RSH=ssh
 export EDITOR="vim"
 export QT_XFT=true
 
