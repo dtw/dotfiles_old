@@ -27,7 +27,6 @@ ignore_files=(.git LICENSE README.md createlinks.sh getvimbundles.sh) # files/fo
 # delete files from the list we want to ignore
 for i in "${ignore_files[@]}"; do
   files=(${files[@]//$dir\/$i}) # list of files/folders to symlink in homedir 
-  echo ${files[@]}
 done
 
 # create dotfiles_old in homedir
