@@ -33,11 +33,11 @@ done
 [[ ! -d $olddir ]]  && mkdir -p $olddir && echo "Creating $olddir for backup of any existing dotfiles in $HOME"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-for file in ${files[@]}; do
-  if [[ -f $HOME/.${file##*/} ]] || [[ -d $HOME/.${file##*/} ]]; then
+for file in "${files[@]}"; do
+  if [[ ! -h "$HOME/.${file##*/}" && ( -f "$HOME/.${file##*/}"  || -d "$HOME/.${file##*/}" ) ]]; then
     echo "Moving existing .${file##*/} from $HOME to $olddir"
-    mv $HOME/.${file##*/} $olddir
+    mv "$HOME/.${file##*/}" "$olddir"
   fi
   echo "Creating symlink to $file in home directory."
-  ln -s $file $HOME/.${file##*/}
+  ln -s "$file" "$HOME/.${file##*/}"
 done
