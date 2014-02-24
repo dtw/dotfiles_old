@@ -21,26 +21,23 @@ set -o nounset                              # Treat unset variables as an error
 
 dir=$HOME/dotfiles                    # dotfiles directory
 olddir=$HOME/.dotfiles_$(date +%Y%m%d) # old dotfiles backup directory
-#files="bashrc vimrc vim zshrc oh-my-zsh"    # list of files/folders to symlink in homedir
-files=$(find $dir -maxdepth 1 -mindepth 1 ! -name *.sh) # list of files/folders to symlink in homedir
+files=($(find $dir -maxdepth 1 -mindepth 1)) # find all files and folders
+ignore_files=(.git LICENSE README.md createlinks.sh getvimbundles.sh) # files/folders you don't want linked
 
-##########
+# delete files from the list we want to ignore
+for i in "${ignore_files[@]}"; do
+  files=(${files[@]//$dir\/$i}) # list of files/folders to symlink in homedir 
+done
 
 # create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing dotfiles in $HOME"
-[[ ! -d $olddir ]]  && mkdir -p $olddir
-echo "...done"
-
-# change to the dotfiles directory
-echo "Changing to the $dir directory"
+[[ ! -d $olddir ]]  && mkdir -p $olddir && echo "Creating $olddir for backup of any existing dotfiles in $HOME"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-for file in $files; do
+for file in ${files[@]}; do
   if [[ -f $HOME/.${file##*/} ]] || [[ -d $HOME/.${file##*/} ]]; then
-    echo "Moving existing dotfile from $HOME to $olddir"
+    echo "Moving existing .${file##*/} from $HOME to $olddir"
     mv $HOME/.${file##*/} $olddir
   fi
-  #mv ~/.$file ~/dotfiles_old/
   echo "Creating symlink to $file in home directory."
   ln -s $file $HOME/.${file##*/}
 done
