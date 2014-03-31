@@ -20,7 +20,7 @@ autocmd BufReadPost *PKGBUILD*  set filetype=sh
 autocmd BufReadPost *.install  set filetype=sh
 filetype plugin indent on
 
-colorscheme elflord
+colorscheme dtw
 "set background=dark
 "colorscheme solarized
 
@@ -41,4 +41,8 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 inoremap jk <ESC>
+
+"vimcasts
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
 
