@@ -58,10 +58,13 @@ urxvt.color12:      #86cdea
 urxvt.color5:       #aa6eaf
 urxvt.color13:      #cb96ce
 
-!DarkCyan + Cyan
+! DarkCyan + Cyan
 urxvt.color6:       #418179
 urxvt.color14:      #71bebe
 
 ! LightGrey + White
 urxvt.color7:       #bebebe
 urxvt.color15:      #ffffff
+
+! Cursor theme
+!Xcursor.theme: Jimmac
