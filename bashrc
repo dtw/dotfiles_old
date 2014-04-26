@@ -20,6 +20,7 @@ alias ls="ls --color"
 alias X="startx -- $@"
 alias wget="wget -t 2 --passive-ftp"
 alias ncmpc="ncmpc -e -h kenpachi"
+alias tmux="tmux attach -d || tmux new"
 
 MANPATH=$MANPATH
 PATH=$HOME/bin:$PATH
