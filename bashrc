@@ -30,5 +30,14 @@ export VDPAU_DRIVER=va_gl
 export EDITOR="vim"
 export QT_XFT=true
 
+# bash history stuff
+export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
+export HISTSIZE=5000                   # big big history
+export HISTFILESIZE=5000               # big big history
+shopt -s histappend                      # append to history, don't overwrite it
+
+# Save the history after each command finishes
+#export PROMPT_COMMAND="history -a\; $PROMPT_COMMAND"
+export PROMPT_COMMAND='if [ "$(id -u)" -ne 0 ]; then echo "$(date "+%Y-%m-%d.%H:%M:%S") $(pwd) $(history 1)" >> ~/.logs/bash-history/$(date "+%Y-%m-%d").log; fi'
 complete -cf sudo
 complete -cf man

@@ -27,7 +27,7 @@ URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 
 ! Font
-URxvt.font: xft:Inconsolata:medium:size=11
+URxvt.font: xft:Inconsolata-g:medium:size=11
 URxvt.letterSpace: -1
 
 ! Colours
